@@ -1,0 +1,26 @@
+﻿@using Schedule_MVC.Models.Admin;
+@model ApproveForm
+
+<form method="post">
+    @foreach (var user in Model.UsersNotApproved)
+    {
+        <div class="container py-5 h-3">
+            <div class="row d-flex justify-content-center align-items-center h-50">
+                <div class="col col-xl-10">
+                    <div class="card mb-5" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                            <h3 class="mb-3">@user.Name</h3>
+                            <p class="mb-3">@user.Email</p>
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <button type="submit" class="btn btn-outline-dark btn-sm btn-floating" asp-controller="Admin" asp-action="Approve" asp-route-id="@user.Id">
+                                    <i class="fas fa-plus">Потвърди потребител</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</form>

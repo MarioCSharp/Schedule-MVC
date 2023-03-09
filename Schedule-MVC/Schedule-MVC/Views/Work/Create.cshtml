@@ -1,0 +1,38 @@
+﻿@using Schedule_MVC.Models.Work;
+@model CreateWorkModel
+
+
+<form method="post" class="col-md-4 offset-md-4">
+    <h1>Добавяне на тест</h1>
+
+    <br />
+
+    <div class="form-floating">
+        <input asp-for="@Model.Date" class="form-control" autocomplete="username" aria-required="true" />
+        <label asp-for="@Model.Date" class="form-label">Месец/Ден/Година</label>
+        <span asp-validation-for="@Model.Date" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="@Model.ClassId"></label>
+        <select asp-for="@Model.ClassId" class="form-control">
+            @foreach (var grade in Model.Classes)
+            {
+                <option value="@grade.Id">@grade.Name</option>
+            }
+        </select>
+        <span asp-validation-for="ClassId" class="small text-danger"></span>
+    </div>
+    <br />
+    <div class="form-floating">
+        <input asp-for="@Model.Subject" class="form-control" autocomplete="username" aria-required="true" />
+        <label asp-for="@Model.Subject" class="form-label"></label>
+        <span asp-validation-for="@Model.Subject" class="text-danger"></span>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">Добави</button>
+    </div>
+
+    <p class="text-danger">@Model.Error</p>
+</form>
